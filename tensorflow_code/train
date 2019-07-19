@@ -1492,5 +1492,17 @@ if __name__ == '__main__':
       with open("/opt/ml/input/config/hyperparameters.json") as json_file:
           data = json.load(json_file)
           FLAGS.how_many_training_steps = int(data.get("how_many_training_steps", FLAGS.how_many_training_steps))
+          FLAGS.print_misclassified_test_images = bool(data.get("print_misclassified_test_images", FLAGS.print_misclassified_test_images))
+          FLAGS.learning_rate = float(data.get("learning_rate", FLAGS.learning_rate))
+          FLAGS.testing_percentage = int(data.get("testing_percentage", FLAGS.testing_percentage))
+          FLAGS.validation_percentage = int(data.get("validation_percentage", FLAGS.validation_percentage))
+          FLAGS.eval_step_interval = int(data.get("eval_step_interval", FLAGS.eval_step_interval))
+          FLAGS.train_batch_size = int(data.get("train_batch_size", FLAGS.train_batch_size))
+          FLAGS.test_batch_size = int(data.get("test_batch_size", FLAGS.test_batch_size))
+          FLAGS.validation_batch_size = int(data.get("validation_batch_size", FLAGS.validation_batch_size))
+          FLAGS.flip_left_right = bool(data.get("flip_left_right", FLAGS.flip_left_right))
+          FLAGS.random_crop = int(data.get("random_crop", FLAGS.random_crop))
+          FLAGS.random_scale = int(data.get("random_scale", FLAGS.random_scale))
+          FLAGS.random_brightness = int(data.get("random_brightness", FLAGS.random_brightness))
 
   tf.app.run(main=main, argv=["/opt/ml/input/data/train/"] + unparsed)
